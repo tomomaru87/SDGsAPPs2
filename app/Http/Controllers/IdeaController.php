@@ -18,7 +18,7 @@ class IdeaController extends Controller
     public function add(){
         //TableSelect::orderby — select 文のソート条件を設定する
         $items= Idea::orderby('created_at')->get();
-        return view('company.manage')->with('items',$items);
+        return view('admin.home')->with(['items'=>$items]);
     }
 
 

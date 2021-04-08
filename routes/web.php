@@ -30,7 +30,7 @@ Route::get('thnks','CompanyController@thnks');
 Route::post('thnks','CompanyController@post');
 
 //会社のアイディア管理者画面
-Route::get('manage','IdeaController@add');
+// Route::post('admin/home','IdeaController@add');
 
 //会社はここまで・・・・・・・・・・・・・・・・・・・・・・・・・・・
 
@@ -45,11 +45,8 @@ Route::get('idea/input','ideacontroller@index');
 Route::post('idea/thnks','Ideacontroller@post');
 Route::get('idea/thnks','IdeaController@thnks');
 
+
 //ログイン画面
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
 // ユーザー
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
