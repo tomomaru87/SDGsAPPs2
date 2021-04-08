@@ -2,11 +2,9 @@
 
 @section('content')
 
-    <a href="input">募集の開始はこちら</a><br>
-    
-    <a href="idea/input">アイディアの投稿はこちら</a>
+   
 
-    <h1>内容の確認</h1>
+    <h1 class="text-lg-center">法人様管理画面</h1>
        <div class="container">
      
             @foreach($items as $ideaData)

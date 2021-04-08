@@ -33,6 +33,7 @@ class IdeaForm extends FormRequest
             'target'=>'required|string',
             'marketing'=>'required|string',
             'make_person'=>'required|string',
+            'pdf' => 'mimes:pdf'
         ];
     }
 }
