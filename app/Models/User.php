@@ -22,12 +22,11 @@ class User extends Authenticatable
         'submission_company',
         'idea_name',
         'number',
-        'company_image',
         'idea_details',
         'budget',
         'target',
-        'marketing',
-        'make_person'
+        'marketing'
+     
        
         
     ];

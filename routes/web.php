@@ -36,14 +36,14 @@ Route::post('thnks','CompanyController@post');
 
 
 
-//アイディア入力関係のルート
-//入力画面
-Route::get('idea/input','ideacontroller@index');
+// //アイディア入力関係のルート
+// //入力画面
+// Route::get('idea/input','ideacontroller@index');
 
 
-//thnks画面のルート
-Route::post('idea/thnks','Ideacontroller@post');
-Route::get('idea/thnks','IdeaController@thnks');
+// //thnks画面のルート
+// Route::post('idea/thnks','Ideacontroller@post');
+// Route::get('idea/thnks','IdeaController@thnks');
 
 
 //ログイン画面

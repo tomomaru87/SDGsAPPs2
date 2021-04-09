@@ -49,7 +49,7 @@ class RegisterController extends Controller
             'msg'=>['required'],
             'pj_name'=>['required'],
             'history'=>['nullable'],
-            'image'=>['image']
+            'image'=>['mimes:jpeg,png,jpg,bmb','max:2500']
 
         ]);
     }
@@ -69,9 +69,10 @@ class RegisterController extends Controller
 
         $contents = $request->input('company_contents');
         $img=$_FILES['image']['name'];
-        $id= Company::where('company_contents',$contents)->value('id');
+        $id= Admin::where('company_contents',$contents)->value('id');
         $path = public_path().'/images/'.$id;
         mkdir($path);
         move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'logo.png');
+
     }
 }

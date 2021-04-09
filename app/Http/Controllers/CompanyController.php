@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Http\Requests\CompanyForm;
+use App\Models\Admin;
 
 class CompanyController extends Controller
 {
@@ -25,7 +26,7 @@ class CompanyController extends Controller
     public function add(){
         //TableSelect::orderby — select 文のソート条件を設定する
 
-        $items= company::orderby('id')->get();
+        $items= Admin::orderby('id')->get();
        
         return view('index')->with([
             'items'=>$items

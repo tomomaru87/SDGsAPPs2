@@ -24,7 +24,7 @@ class Admin extends Authenticatable
         'company_contents',
         'link',
         'msg',
-        'history'
+        
        
     ];
 

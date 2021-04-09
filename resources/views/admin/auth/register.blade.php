@@ -5,17 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('法人登録フォーム') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('名前') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('会社名') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                 <div class="col-md-6">
+                  <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -63,10 +63,10 @@
 
                         <!--ここから会社情報の入力-->
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('担当者名') }}</label>
+                            <label for="pj_name" class="col-md-4 col-form-label text-md-right">{{ __('担当者名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="pj_name" type="text" class="form-control @error('name') is-invalid @enderror" name="pj_name" value="{{ old('pj_name') }}" required autocomplete="pj_name" autofocus>
+                                <input id="pj_name" type="text" class="form-control @error('pj_name') is-invalid @enderror" name="pj_name" value="{{ old('pj_name') }}" required autocomplete="pj_name" autofocus>
 
                                 @error('pj_name')
                                     <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('事業内容') }}</label>
+                            <label for="company_contents" class="col-md-4 col-form-label text-md-right">{{ __('事業内容') }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="company_contents" type="text" class="form-control @error('company_contents') is-invalid @enderror" name="company_contents"  required autocomplete="company_contents" autofocus>{{ old('company_contents') }}</textarea>
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('自社のホームページリンク') }}</label>
+                            <label for="link" class="col-md-4 col-form-label text-md-right">{{ __('自社のホームページリンク') }}</label>
 
                             <div class="col-md-6">
                                 <input id="link" type="text" class="form-control @error('link') is-invalid @enderror" name="link" value="{{ old('link') }}" required autocomplete="link" autofocus>
@@ -105,10 +105,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('どんなアイディアがほしいか？') }}</label>
+                            <label for="msg" class="col-md-4 col-form-label text-md-right">{{ __('どんなアイディアがほしいか？') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="msg" type="text" class="form-control @error('company_contents') is-invalid @enderror" name="msg" required autocomplete="msg" autofocus>{{ old('msg') }}</textarea>
+                                <textarea id="msg" type="text" class="form-control @error('msg') is-invalid @enderror" name="msg" required autocomplete="msg" autofocus>{{ old('msg') }}</textarea>
 
                                 @error('msg')
                                     <span class="invalid-feedback" role="alert">
@@ -131,7 +131,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('アイディアの募集開始！') }}
                                 </button>
                             </div>
                         </div>
@@ -152,4 +152,5 @@
 }
 
     </script>
+
 @endsection
