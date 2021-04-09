@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Idea;
+use App\Models\Admin;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     
     public function index()
-    { $items= Idea::orderby('created_at')->get();
+    { $items= admin::orderby('created_at')->get();
         return view('admin.home')->with(['items'=>$items]);
        
     }

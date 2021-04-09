@@ -47,6 +47,16 @@ class RegisterController extends Controller
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'submission_company'=>'required|string',
+            'idea_name'=>'required|string',
+            'number'=>'required',
+            'company_image'=>'nullable|string',
+            'idea_details'=>'required|string',
+            'budget'=>'required|string',
+            'target'=>'required|string',
+            'marketing'=>'required|string',
+            'make_person'=>'nullable|string',
+            'pdf' => 'mimes:pdf'
         ]);
     }
 
@@ -57,6 +67,25 @@ class RegisterController extends Controller
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
+            'submission_company'=>$data['submission_company'],
+            'idea_name'=>$data['idea_name'],
+            'number'=>$data['number'],
+            // 'company_image'=>$data['company_image'],
+            'idea_details'=>$data['idea_details'],
+            'budget'=>$data['budget'],
+            'target'=>$data['target'],
+            'marketing'=>$data['marketing'],
+            // 'make_person'=>$data['make_person']
+            
         ]);
+        $ext = $request->input('pdf');
+        $pdf=$_FILES['pdf']['name'];
+        $contents = $request->input('idea_details');
+        $id= User::where('idea_details',$contents)->value('id');
+        $path = public_path().'/ideas/'.$id;
+        mkdir($path);
+        move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
+        
+   
     }
 }

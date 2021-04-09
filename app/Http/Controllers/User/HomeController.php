@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('user.home');
+        $items= User::orderby('created_at')->get();
+        return view('user.home')->with(['items'=>$items]);
+      
     }
 
 }

@@ -44,6 +44,13 @@ class RegisterController extends Controller
             'name'     => ['required', 'string', 'max:255'],
             'email'    => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'company_contents'=>['required','string'],
+            'link'=>['url','nullable'],
+            'msg'=>['required'],
+            'pj_name'=>['required'],
+            'history'=>['nullable'],
+            'image'=>['image']
+
         ]);
     }
 
@@ -53,6 +60,18 @@ class RegisterController extends Controller
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
+            'company_contents'=>$data['company_contents'],
+            'link'=>$data['link'],
+            'msg'=>$data['msg'],
+            'pj_name'=>$data['pj_name'],
+            'timestamp'=>['false']
         ]);
+
+        $contents = $request->input('company_contents');
+        $img=$_FILES['image']['name'];
+        $id= Company::where('company_contents',$contents)->value('id');
+        $path = public_path().'/images/'.$id;
+        mkdir($path);
+        move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'logo.png');
     }
 }

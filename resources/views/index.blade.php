@@ -1,17 +1,35 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>掲示板システム</title>
+@extends('layouts.admin.app')
 
-        <!-- これはbootstrapのスタイルシートを定義しています。 -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    </head>
-    <body>
+@section('content')
 
-    <a href="input">募集の開始はこちら</a><br>
-    
-    <a href="idea/input">アイディアの投稿はこちら</a>
+@unless (Auth::guard('user')->check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.login') }}">{{ __('ユーザーログイン') }}</a>
+                            </li>
+                            @if (Route::has('user.register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.register') }}">{{ __('ユーザー登録') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user.logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('ログアウト') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endunless
 
     <h1>内容の確認</h1>
        <div class="container">
@@ -42,9 +60,4 @@
             @endforeach
             <!-- ここまで -->
         </div>
-        <!-- ここにBootstrapで使用するjavascriptファイルを記述します。 -->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>        
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    </body>
-</html>
+    @endsection
