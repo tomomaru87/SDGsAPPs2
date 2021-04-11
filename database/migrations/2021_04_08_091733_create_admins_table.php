@@ -24,6 +24,7 @@ class CreateAdminsTable extends Migration
             $table->string('company_contents');
             $table->string('link');
             $table->string('msg');
+            $table->timestamps();
          
          
         });

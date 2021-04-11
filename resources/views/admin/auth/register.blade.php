@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('法人登録フォーム') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.register') }}">
+                    <form method="POST" action="{{ route('admin.register') }}" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="form-group row">
@@ -121,6 +121,11 @@
                         <div class="form-group">
                     <label for="comment">会社のロゴ（HOME画面のサムネイルとして使用されます）</label>
                     <input type="file" class="form-control" id="comment" name="image"  onchange="previewImage(this);"></input>
+                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                 </div>
                 
                 <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:70%;">

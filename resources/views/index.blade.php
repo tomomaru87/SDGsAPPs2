@@ -35,17 +35,13 @@
        <div class="container">
      
             @foreach($items as $companyData)
-<img src="<?php print '/images/'.$companyData['id'].'/'.'logo.png';?>"style="max-width:70%">
+<img src="<?php print public_path().'/images/'.$companyData['id'].'/'.'logo.png';?>"style="max-width:70%">
 
             <div class="row">
-                <label>会社名：<b>{{$companyData->company_name}}</b></label>
+                <label>会社名：<b>{{$companyData->name}}</b></label>
             </div>
             <div class="row">
                 <label>事業内容：<b>{{$companyData->company_contents}}</b></label>
-            </div>
-
-            <div class="row">
-                <label>会社の歴史：<b>{{$companyData->history}}</b></label>
             </div>
 
             <div class="row">

@@ -49,7 +49,7 @@ class RegisterController extends Controller
             'msg'=>['required'],
             'pj_name'=>['required'],
             'history'=>['nullable'],
-            'image'=>['mimes:jpeg,png,jpg,bmb','max:2500']
+            'image'=>['mimes:jpeg,png,jpg,bmb','max:2500','nullable']
 
         ]);
     }
@@ -64,7 +64,8 @@ class RegisterController extends Controller
             'link'=>$data['link'],
             'msg'=>$data['msg'],
             'pj_name'=>$data['pj_name'],
-            'timestamp'=>['false']
+            'timestamp'=>['false'],
+           
         ]);
 
         $contents = $request->input('company_contents');
@@ -73,6 +74,8 @@ class RegisterController extends Controller
         $path = public_path().'/images/'.$id;
         mkdir($path);
         move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'logo.png');
+
+        return redirect('home');
 
     }
 }

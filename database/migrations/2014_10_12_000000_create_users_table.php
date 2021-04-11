@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); 
             $table->string('submission_company');
             $table->string('idea_name');
             $table->string('number');
@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('target');
             $table->string('marketing');
             $table->string('make_person');
+           
           
         });
     }

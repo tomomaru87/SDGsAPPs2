@@ -86,6 +86,6 @@ class RegisterController extends Controller
         mkdir($path);
         move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
         
-        return view('user.home');
+        return view('home');
     }
 }
