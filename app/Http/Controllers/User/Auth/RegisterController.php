@@ -56,36 +56,40 @@ class RegisterController extends Controller
             'target'=>'required|string',
             'marketing'=>'required|string',
             'make_person'=>'nullable|string',
-            'pdf' => 'mimes:pdf'
+            'pdf' => 'mimes:pdf|nullable'
         ]);
     }
 
     // 登録処理
     protected function create(array $data)
     {
-        return User::create([
+       
+
+        User::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
             'submission_company'=>$data['submission_company'],
             'idea_name'=>$data['idea_name'],
             'number'=>$data['number'],
-            // 'company_image'=>$data['company_image'],
             'idea_details'=>$data['idea_details'],
             'budget'=>$data['budget'],
             'target'=>$data['target'],
             'marketing'=>$data['marketing'],
-            // 'make_person'=>$data['make_person']
-            
+          
         ]);
-        $ext = $request->input('pdf');
-        $pdf=$_FILES['pdf']['name'];
-        $contents = $request->input('idea_details');
-        $id= User::where('idea_details',$contents)->value('id');
-        $path = public_path().'/ideas/'.$id;
-        mkdir($path);
-        move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
-        
-        return view('home');
+    
+        $ext = $data['pdf'];
+         $pdf=$_FILES['pdf']['name'];
+         $contents =$data ['idea_details'];
+         $id= User::where('idea_details',$contents)->value('id');
+         $path = public_path().'/ideas/'.$id;
+         mkdir($path);
+         move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
+     
+        return redirect('/home');
+
+           
+       
     }
 }

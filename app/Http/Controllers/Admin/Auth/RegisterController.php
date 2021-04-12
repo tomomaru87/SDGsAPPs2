@@ -49,14 +49,14 @@ class RegisterController extends Controller
             'msg'=>['required'],
             'pj_name'=>['required'],
             'history'=>['nullable'],
-            'image'=>['mimes:jpeg,png,jpg,bmb','max:2500','nullable']
+            'image'=>['mimes:jpeg,png,jpg,bmb']
 
         ]);
     }
 
     protected function create(array $data)
     {
-        return Admin::create([
+         Admin::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
@@ -64,18 +64,18 @@ class RegisterController extends Controller
             'link'=>$data['link'],
             'msg'=>$data['msg'],
             'pj_name'=>$data['pj_name'],
-            'timestamp'=>['false'],
+            'timestamp'=>['false']
            
         ]);
-
-        $contents = $request->input('company_contents');
-        $img=$_FILES['image']['name'];
+        $file=$data['image'];
+        $contents = $data['company_contents'];
         $id= Admin::where('company_contents',$contents)->value('id');
         $path = public_path().'/images/'.$id;
         mkdir($path);
-        move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'logo.png');
-
-        return redirect('home');
+        // file_put_contents($path,$file);
+         move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'img.png');
+           
+ 
 
     }
 }

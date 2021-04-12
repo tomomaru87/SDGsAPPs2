@@ -23,11 +23,11 @@ Route::get('/','CompanyController@add');
 
 //会社情報入力関係
 
-Route::get('input','CompanyController@index');
+// Route::get('input','CompanyController@index');
 
 //送信完了後
-Route::get('thnks','CompanyController@thnks');
-Route::post('thnks','CompanyController@post');
+// Route::get('thnks','CompanyController@thnks');
+// Route::post('thnks','CompanyController@post');
 
 //会社のアイディア管理者画面
 // Route::post('admin/home','IdeaController@add');
@@ -83,5 +83,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::resource('home', 'HomeController', ['only' => 'index']);
 
     });
+
+    Route::post('admin/home','RegisterController@imgsave');
 
 });

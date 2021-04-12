@@ -27,8 +27,7 @@ class CompanyController extends Controller
         //TableSelect::orderby — select 文のソート条件を設定する
 
         $items= Admin::orderby('id')->get();
-       
-        return view('index')->with([
+       return view('index')->with([
             'items'=>$items
             ]);
     }

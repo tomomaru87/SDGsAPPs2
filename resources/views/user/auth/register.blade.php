@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user.register') }}"enctype="multipart/form-data" >
+                    <form method="POST" action="{{ route('user.register') }}" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="form-group row">
@@ -163,7 +163,7 @@
 
                         <div class="form-group">
                     <label for="comment">その他補足資料(PDFのみ対応)</label>
-                    <input type="file" class="form-control" id="comment" name="pdf" accept=".pdf"></input>
+                    <input type="file" class="form-control" id="pdf" name="pdf" accept=".pdf"></input>
                     @error('pdf')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

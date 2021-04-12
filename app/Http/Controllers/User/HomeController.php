@@ -14,11 +14,15 @@ class HomeController extends Controller
         $this->middleware('auth:user');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $items= User::orderby('created_at')->get();
         return view('user.home')->with(['items'=>$items]);
+
+        
       
+        
+
     }
 
 }
