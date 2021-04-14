@@ -35,7 +35,7 @@
        <div class="container">
      
             @foreach($items as $companyData)
-<img src="<?php print '/images/'.$companyData['id'].'/'.'logo.png';?>"style="max-width:70%">
+<img src="<?php print '/images/'.$companyData['id'].'/'.'img.png';?>"style="max-width:70%">
 
             <div class="row">
                 <label>会社名：<b>{{$companyData->name}}</b></label>

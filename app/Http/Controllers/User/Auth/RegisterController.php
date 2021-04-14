@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Admin;
 
 class RegisterController extends Controller
 {
@@ -37,7 +38,8 @@ class RegisterController extends Controller
     // 新規登録画面
     public function showRegistrationForm()
     {
-        return view('user.auth.register');
+        $company=Admin::select('name')->get();
+        return view('user.auth.register')->with(['company'=>$company]);
     }
 
     // バリデーション
@@ -63,9 +65,7 @@ class RegisterController extends Controller
     // 登録処理
     protected function create(array $data)
     {
-       
-
-        User::create([
+        $user = User::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
@@ -79,15 +79,12 @@ class RegisterController extends Controller
           
         ]);
     
-        $ext = $data['pdf'];
-         $pdf=$_FILES['pdf']['name'];
-         $contents =$data ['idea_details'];
-         $id= User::where('idea_details',$contents)->value('id');
+         $id = $user->id;
          $path = public_path().'/ideas/'.$id;
          mkdir($path);
          move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
      
-        return redirect('/home');
+        return $user;
 
            
        

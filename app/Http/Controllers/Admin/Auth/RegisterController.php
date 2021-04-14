@@ -56,7 +56,8 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-         Admin::create([
+        //変数に値を格納する。
+        $admin= Admin::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
@@ -67,13 +68,14 @@ class RegisterController extends Controller
             'timestamp'=>['false']
            
         ]);
-        $file=$data['image'];
-        $contents = $data['company_contents'];
-        $id= Admin::where('company_contents',$contents)->value('id');
+        //以下画像のアップロード
+      
+        $id = $admin->id;
         $path = public_path().'/images/'.$id;
         mkdir($path);
-        // file_put_contents($path,$file);
-         move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'img.png');
+        move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'img.png');
+        
+        return $admin;
            
  
 

@@ -65,15 +65,22 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('提出先企業名') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="submission_company" type="text" class="form-control @error('submission_company') is-invalid @enderror" name="submission_company" value="{{ old('submission_company') }}" required autocomplete="submission_company">
+                            <!--div class="col-md-6">
+                                <input id="submission_company" type="text" class="form-control @error('submission_company') is-invalid @enderror" name="submission_company" value="{{ old('submission_company') }}" required autocomplete="submission_company"-->
+                               
+                        <select name="submission_company">
+                        @foreach($company as $name)
+                        <option>{{$name->name}}</option>
+                        @endforeach
+                        </select>
+                      
 
                                 @error('submission_company')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                           
                         </div>
 
                         <div class="form-group row">

@@ -11,7 +11,9 @@
      
             @foreach($items as $ideaData)
 <p><a href="<?php print '/ideas/'.$ideaData['id'].'/'.'idea.pdf';?>">補足資料はこちら（PDFファイル）</a></p>
-
+<div class="row">
+                <label>提出先起業：<b>{{$ideaData->submission_company}}</b></label>
+            </div>
             <div class="row">
                 <label>アイディア名：<b>{{$ideaData->idea_name}}</b></label>
             </div>
@@ -19,9 +21,7 @@
                 <label>SDGsナンバー：<b>{{$ideaData->number}}</b></label>
             </div>
 
-            <div class="row">
-                <label>会社に対するイメージ：<b>{{$ideaData->company_image}}</b></label>
-            </div>
+           
 
             <div class="row">
                 <label>アイディアの詳細：<b>{{$ideaData->idea_details}}</b></label>
