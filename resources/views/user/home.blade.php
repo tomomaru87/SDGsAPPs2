@@ -10,6 +10,7 @@
        <div class="container">
      
             @foreach($items as $ideaData)
+            @if($ideaData->idea_details==$user->idea_details && $ideaData->idea_name==$user->idea_name && $ideaData->name==$user->name)
 <p><a href="<?php print '/ideas/'.$ideaData['id'].'/'.'idea.pdf';?>">補足資料はこちら（PDFファイル）</a></p>
 <div class="row">
                 <label>提出先起業：<b>{{$ideaData->submission_company}}</b></label>
@@ -43,6 +44,7 @@
         <label>事業化に必要な人材スキル：<b>{{$ideaData->make_person}}</b></label>
         </div>
             <hr>
+            @endif
             @endforeach
             <!-- ここまで -->
         </div>
