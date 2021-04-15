@@ -112,13 +112,15 @@
                         @enderror
                         </div>
 
+                        <input type="hidden" name="id" value="{{$ideaData->id}}">
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('アイディアの送信') }}
                                 </button>
                             </div>
-                            <input hidden name="id" value="{{$ideaData->id}}">
+                         
 
                             </form>
 

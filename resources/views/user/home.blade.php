@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <a href="input">募集の開始はこちら</a><br>
     
     <a href="idea/input">アイディアの投稿はこちら</a>

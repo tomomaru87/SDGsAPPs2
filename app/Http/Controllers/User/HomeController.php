@@ -60,6 +60,11 @@ class HomeController extends Controller
             'target'=>$request->target
             
         ]);
+
+        $id = $request->id;
+        $path = public_path().'/ideas/'.$id;
+        move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
+    
         
         
         return view('user.comp');
