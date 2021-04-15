@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('アイディア名') }}</label>
+                            <label for="idea_name" class="col-md-4 col-form-label text-md-right">{{ __('アイディア名') }}</label>
 
                             <div class="col-md-6">
                                 <input id="idea_name" type="text" class="form-control @error('idea_name') is-invalid @enderror" name="idea_name" value="{{ old('idea_name') }}" required autocomplete="idea_name">

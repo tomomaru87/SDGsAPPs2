@@ -39,13 +39,11 @@
         <div class="row">
         <label>マーケティングプラン：<b>{{$ideaData->marketing}}</b></label>
         </div>
-
-        <div class="row">
-        <label>事業化に必要な人材スキル：<b>{{$ideaData->make_person}}</b></label>
-        </div>
             <hr>
             @endif
             @endforeach
+            <a href="edit">編集画面</a>
+
             <!-- ここまで -->
         </div>
       @endsection

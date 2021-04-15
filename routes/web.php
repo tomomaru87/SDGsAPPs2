@@ -1,47 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-
-
-
 //TOPページ
 Route::get('/','CompanyController@add');
 
 
 //会社情報入力関係
 
-// Route::get('input','CompanyController@index');
-
-//送信完了後
-// Route::get('thnks','CompanyController@thnks');
-// Route::post('thnks','CompanyController@post');
-
-//会社のアイディア管理者画面
-// Route::post('admin/home','IdeaController@add');
-
-//会社はここまで・・・・・・・・・・・・・・・・・・・・・・・・・・・
-
-
-
-// //アイディア入力関係のルート
-// //入力画面
-// Route::get('idea/input','ideacontroller@index');
-
-
-// //thnks画面のルート
-// Route::post('idea/thnks','Ideacontroller@post');
-// Route::get('idea/thnks','IdeaController@thnks');
 
 
 //ログイン画面
@@ -52,7 +16,8 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Auth::routes([
         'register' => true,
         'reset'    => false,
-        'verify'   => false
+        'verify'   => false,
+        'edit' => true
     ]);
 
     // ログイン認証後
@@ -60,7 +25,9 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
         // TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
-
+        Route::get('edit', 'HomeController@edit');
+        Route::post('comp','HomeController@validate');
+        Route::post('comp','HomeController@update');
     });
 });
 
@@ -71,7 +38,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Auth::routes([
         'register' => true,
         'reset'    => false,
-        'verify'   => false
+        'verify'   => false,
+        'edit' => true
     ]);
 
     // ログイン認証後
@@ -79,9 +47,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
         // TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
-
+        
     });
-
-    Route::post('admin/home','RegisterController@imgsave');
 
 });
