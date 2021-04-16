@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
+    <a class="navbar-brand"></a>
     <form method="GET" action="home"class="d-flex">
       <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">検索</button>
@@ -16,53 +16,50 @@
     <h1 class="text-lg-center"></h1>
        <div class="container">
 
-            @foreach($items as $ideaData)
-            
-           @if($ideaData->submission_company==$user->name)
         
-<p><a href="<?php print '/ideas/'.$ideaData['id'].'/'.'idea.pdf';?>">補足資料はこちら（PDFファイル）</a></p>
+            @for($i=0 ; $i < count($items);$i++)
+           @if($items[$i]->submission_company==$user->name)
+        
+<p><a href="<?php print '/ideas/'.$items[$i]->id.'/'.'idea.pdf';?>">補足資料はこちら（PDFファイル）</a></p>
 
 <div class="row">
-                <label>アイディア提出者：<b>{{$ideaData->name}} </b></label>
-              
+                <label>アイディア提出者：<b>{{$items[$i]->name}} </b></label>
             </div>
 <div class="row">
-                <label>提出先会社名：<b>{{$ideaData->submission_company}} </b></label>
+                <label>提出先会社名：<b>{{$items[$i]->submission_company}} </b></label>
               
             </div>
             <div class="row">
-                <label>アイディア名：<b>{{$ideaData->idea_name}}</b></label>
+                <label>アイディア名：<b>{{$items[$i]->idea_name}}</b></label>
             </div>
             <div class="row">
-                <label>SDGsナンバー：<b>{{$ideaData->number}}</b></label>
+                <label>SDGsナンバー：<b>{{$items[$i]->number}}</b></label>
             </div>
 
           
 
             <div class="row">
-                <label>アイディアの詳細：<b>{{$ideaData->idea_details}}</b></label>
+                <label>アイディアの詳細：<b>{{$items[$i]->idea_details}}</b></label>
             </div>
 
             <div class="row">
-                <label>予算：<b>{{$ideaData->budget}}</b></label>
+                <label>予算：<b>{{$items[$i]->budget}}</b></label>
             </div>
 
             <div class="row">
-            <label>顧客ターゲット：<b>{{$ideaData->target}}</b></label>
+            <label>顧客ターゲット：<b>{{$items[$i]->target}}</b></label>
         </div>
           
         <div class="row">
-        <label>マーケティングプラン：<b>{{$ideaData->marketing}}</b></label>
+        <label>マーケティングプラン：<b>{{$items[$i]->marketing}}</b></label>
         </div>
+<hr>
 
-        <div class="row">
-        <label>事業化に必要な人材スキル：<b>{{$ideaData->make_person}}</b></label>
-        </div>
-            @else
-            <h2>まだ提出アイディアはありません。</h2>
         @endif
-            @endforeach
-            <!-- ここまで -->
+   
+        @endfor
+       
+            </div>
         </div>
         {{$items->links()}}
       @endsection
