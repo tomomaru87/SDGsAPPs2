@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Edit extends FormRequest
+class Add extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,8 @@ class Edit extends FormRequest
     public function rules()
     {
         return [
+            'name' =>'required|string',
+            'email' =>'required|string',
             'idea_name'=>'required|string',
             'number'=>'required',
             'idea_details'=>'required|string',
@@ -31,9 +33,6 @@ class Edit extends FormRequest
             'target'=>'required|string',
             'marketing'=>'required|string',
             'pdf' => 'mimes:pdf|nullable'
-
-
-
         ];
     }
 }

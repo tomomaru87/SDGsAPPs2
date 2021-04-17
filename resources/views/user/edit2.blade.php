@@ -3,7 +3,7 @@
 @section('content')
 
 
-<form method="POST" action="comp" enctype="multipart/form-data" >
+<form method="POST" action="comp2" enctype="multipart/form-data" >
 @csrf
                             <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('提出先企業名') }}</label>

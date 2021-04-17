@@ -24,12 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('submission_company');
             $table->string('idea_name');
             $table->string('number');
-            $table->string('company_image');
             $table->string('idea_details');
             $table->string('budget');
             $table->string('target');
             $table->string('marketing');
-            $table->string('make_person');
            
           
         });

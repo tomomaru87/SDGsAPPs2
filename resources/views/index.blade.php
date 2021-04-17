@@ -1,61 +1,59 @@
 @extends('layouts.admin.app')
-
 @section('content')
 
+<div class="container">
 @unless (Auth::guard('user')->check())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.login') }}">{{ __('ユーザーログイン') }}</a>
-                            </li>
-                            @if (Route::has('user.register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.register') }}">{{ __('ユーザー登録') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+<a  type = "button" class= "btn btn-outline-success" href="{{ route('user.login') }}">{{ __('ユーザー登録がお済みの方はこちらからログイン') }}</a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('user.logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('ログアウト') }}
-                                    </a>
+@else
+<a  type = "button" class= "btn btn-outline-success" href="{{ route('user.login') }}">{{ __('ユーザー管理ページへ') }}</a>
 
-                                    <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endunless
-
-    <h1>内容の確認</h1>
-       <div class="container">
-     
+<a type = "button" class= "btn btn-outline-success" href="{{ route('user.logout') }}" onclick="event.preventDefault();
+document.getElementById('logout-form').submit();">{{ __('ログアウト') }}</a>
+ <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+     @csrf
+    </form>
+                     @endunless
+                    
+      
+       <h1 class="display-6">募集企業一覧</h1>
             @foreach($items as $companyData)
-<img src="<?php print '/images/'.$companyData['id'].'/'.'img.png';?>"style="max-width:70%">
+            @for($i=0 ; $i < count($Additems);$i++)
 
-            <div class="row">
-                <label>会社名：<b>{{$companyData->name}}</b></label>
-            </div>
-            <div class="row">
-                <label>事業内容：<b>{{$companyData->company_contents}}</b></label>
-            </div>
+            <div class="card">
+  <div class="card-body">
+    <p class="card-text">{{$companyData->name}}</p>
+  </div>
+  <img src="<?php print '/images/'.$companyData['id'].'/'.'img.png';?>" alt="Card image">
+  <div class="card-body">
+   <label>事業内容<p class="card-text">{{$companyData->company_contents}}</p></label><br>
+   <label>HPへのリンク<p class="card-text">{{$companyData->link}}</p></label><br>
+   <label>提出者へのメッセージ<p class="card-text">{{$companyData->msg}}</p></label><br>
 
-           
+   @unless (Auth::guard('user')->check())
 
-            <div class="row">
-                <label>HPへのリンク：<b>{{$companyData->link}}</b></label>
-            </div>
+   @if (Route::has('user.register'))
+   <a type="button" class="btn btn-outline-danger"　href="{{ route('user.register') }}">{{ __('アイディアの提出') }}</a>
+   @endif
 
-            <div class="row">
-                <label>メッセージ：<b>{{$companyData->msg}}</b></label>
-            </div>
+   @elseif(optional(Auth::user())->submission_company == $companyData->name ||$companyData->name == $Additems[$i]->submission_company && Auth::user()->name == $Additems[$i]->name && Auth::user()->email == $Additems[$i]->email)
+   <a type="button" class="btn btn-outline-danger"　href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ __('※すでに提出済みです') }}</a>
+
+   @else
+
+   <a type = "button" class= "btn btn-outline-success" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre onclick="event.preventDefault();
+document.getElementById('add-form').submit();">
+ <form id="add-form" action="user/add" method="POST" style="display: none;">
+     @csrf
+     <input type="hidden" name="add-company" value="{{$companyData->name}}">
+    </form>
+   {{ optional(Auth::user())->name }}としてアイディアを追加する</a>
+</div>
+@endunless
           
             <hr>
+            @endfor
             @endforeach
             <!-- ここまで -->
         </div>
-    @endsection
+@endsection

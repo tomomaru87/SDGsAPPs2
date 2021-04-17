@@ -1,25 +1,48 @@
-@extends('layouts.admin.app')
+@extends('layouts.user.app')
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Register') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="success" enctype="multipart/form-data" >
+                        @csrf
+
+            <input id="name" type="hidden" class="form-control" name="name" value="{{Auth::user()->name}}">
+
+            <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror" name="email" value="{{Auth::user()->email}}">
 
 
-<form method="POST" action="comp" enctype="multipart/form-data" >
-@csrf
-                            <div class="form-group row">
+                        
+
+                    <hr>
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('提出先企業名') }}</label>
 
-                  
-                        <p>{{$items->submission_company}}</p>
+                               
+                        <select name="submission_company">
+                       
+                        <option>{{$company}}</option>
+                       
+                        </select>
                       
-                              
-                        </div>
 
+                                @error('submission_company')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                        </div>
 
                         <div class="form-group row">
                             <label for="idea_name" class="col-md-4 col-form-label text-md-right">{{ __('アイディア名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="idea_name" type="text" class="form-control @error('idea_name') is-invalid @enderror" name="idea_name" value="{{$items->idea_name}}" >
+                                <input id="idea_name" type="text" class="form-control @error('idea_name') is-invalid @enderror" name="idea_name" value="{{ old('idea_name') }}" required autocomplete="idea_name">
 
                                 @error('idea_name')
                                     <span class="invalid-feedback" role="alert">
@@ -33,9 +56,9 @@
                             <label for="number" class="col-md-4 col-form-label text-md-right">{{ __('SDGsナンバー') }}</label>
 
                             <div class="col-md-6">
-                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" value="{{$items->number}}" required autocomplete="idea_name">
+                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" required autocomplete="number">
 
-                                @error('idea_name')
+                                @error('number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -44,10 +67,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="idea_name" class="col-md-4 col-form-label text-md-right">{{ __('アイディアの詳細') }}</label>
+                            <label for="idea_details" class="col-md-4 col-form-label text-md-right">{{ __('アイディアの詳細') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="idea_details" type="text" class="form-control @error('idea_details') is-invalid @enderror" name="idea_details" value="" required autocomplete="idea_name" required autocomplete="idea_name">{{$items->idea_details}}</textarea>
+                                <input id="idea_details" type="text" class="form-control @error('idea_details') is-invalid @enderror" name="idea_details" value="{{ old('idea_details') }}" required autocomplete="idea_details">
 
                                 @error('idea_details')
                                     <span class="invalid-feedback" role="alert">
@@ -61,7 +84,7 @@
                             <label for="budget" class="col-md-4 col-form-label text-md-right">{{ __('予算') }}</label>
 
                             <div class="col-md-6">
-                                <input id="budget" type="text" class="form-control @error('idea_name') is-invalid @enderror" name="budget" value="{{$items->budget}}" required autocomplete="budget">
+                                <input id="budget" type="text" class="form-control @error('budget') is-invalid @enderror" name="budget" value="{{ old('budget') }}" required autocomplete="budget">
 
                                 @error('budget')
                                     <span class="invalid-feedback" role="alert">
@@ -76,7 +99,7 @@
                             <label for="target" class="col-md-4 col-form-label text-md-right">{{ __('顧客ターゲット') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="target" type="text" class="form-control @error('target') is-invalid @enderror" name="target"  required autocomplete="idea_name">{{$items->target}}</textarea>
+                                <input id="target" type="text" class="form-control @error('target') is-invalid @enderror" name="target" value="{{ old('target') }}" required autocomplete="target">
 
                                 @error('target')
                                     <span class="invalid-feedback" role="alert">
@@ -87,10 +110,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="target" class="col-md-4 col-form-label text-md-right">{{ __('マーケティングプラン') }}</label>
+                            <label for="marketing" class="col-md-4 col-form-label text-md-right">{{ __('マーケティング戦略') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="marketing" type="text" class="form-control @error('marketing') is-invalid @enderror" name="marketing" required autocomplete="idea_name">{{$items->marketing}}</textarea>
+                                <input id="marketing" type="text" class="form-control @error('marketing') is-invalid @enderror" name="marketing" value="{{ old('marketing') }}" required autocomplete="marketing">
 
                                 @error('marketing')
                                     <span class="invalid-feedback" role="alert">
@@ -101,16 +124,14 @@
                         </div>
 
                         <div class="form-group">
-                        <label for="comment">その他補足資料(PDFのみ対応)</label>
-                        <input type="file" class="form-control" id="pdf" name="pdf" accept=".pdf"></input>
-                        @error('pdf')
-                            <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                         </span>
-                        @enderror
-                        </div>
-
-                        <input type="hidden" name="id" value="{{$items->id}}">
+                    <label for="comment">その他補足資料(PDFのみ対応)</label>
+                    <input type="file" class="form-control" id="pdf" name="pdf" accept=".pdf"></input>
+                    @error('pdf')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -118,9 +139,11 @@
                                     {{ __('アイディアの送信') }}
                                 </button>
                             </div>
-                         
-
-                            </form>
-
-                       
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

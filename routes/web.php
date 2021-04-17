@@ -25,9 +25,14 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
         // TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
-        Route::get('edit', 'HomeController@edit');
-        Route::post('comp','HomeController@validate');
+        //アイディアの編集ルート↓
+        Route::post('edit', 'HomeController@edit');
+        Route::post('edit2', 'HomeController@edit2');
+        Route::post('comp2','HomeController@update2');
         Route::post('comp','HomeController@update');
+        Route::post('add','HomeController@add');
+        Route::post('success','HomeController@success');
+       
     });
 });
 
