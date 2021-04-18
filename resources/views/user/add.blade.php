@@ -23,14 +23,14 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('提出先企業名') }}</label>
 
                                
-                        <select name="submission_company">
+                        <select name="company">
                        
                         <option>{{$company}}</option>
                        
                         </select>
                       
 
-                                @error('submission_company')
+                                @error('company')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

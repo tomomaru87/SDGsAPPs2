@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CompanyForm;
 use App\Models\Admin;
-use App\Models\Company;
+use App\Models\Idea;
 use Illuminate\Support\Facades\Auth; 
 
 class CompanyController extends Controller
@@ -28,7 +28,7 @@ class CompanyController extends Controller
         //TableSelect::orderby — select 文のソート条件を設定する
         $user = Auth::user();
         $items= Admin::orderby('id')->get();
-        $Additems= Company::orderby('created_at','desc')->get();
+        $Additems= Idea::orderby('created_at','desc')->get();
        return view('index')->with([
             'items'=>$items,
             'user'=>$user,

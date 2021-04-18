@@ -69,20 +69,10 @@ class RegisterController extends Controller
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
-            // 'submission_company'=>$data['submission_company'],
-            // 'idea_name'=>$data['idea_name'],
-            // 'number'=>$data['number'],
-            // 'idea_details'=>$data['idea_details'],
-            // 'budget'=>$data['budget'],
-            // 'target'=>$data['target'],
-            // 'marketing'=>$data['marketing'],
           
         ]);
     
-        //  $id = $user->id;
-        //  $path = public_path().'/ideas/'.$id;
-        //  mkdir($path);
-        //  move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
+     
      
         return $user;
 

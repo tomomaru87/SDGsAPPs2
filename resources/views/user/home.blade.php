@@ -13,7 +13,7 @@
           
 
             <div class="row">
-                <label>提出先起業：<b>{{$Addidea->submission_company}}</b></label>
+                <label>提出先起業：<b>{{$Addidea->company}}</b></label>
             </div>
 
             <div class="row">
@@ -50,7 +50,7 @@
         <input type="hidden" name="email" value="{{$Addidea->email}}">
         <input type="hidden" name="idea_name" value="{{$Addidea->idea_name}}">
         <input type="hidden" name="number" value="{{$Addidea->number}}">
-        <input type="hidden" name="submission_company" value="{{$Addidea->submission_company}}">
+        <input type="hidden" name="company" value="{{$Addidea->company}}">
         <input type="hidden" name="idea_details" value="{{$Addidea->idea_details}}">
         <input type="hidden" name="budget" value="{{$Addidea->budget}}">
         <input type="hidden" name="target" value="{{$Addidea->target}}">
@@ -70,7 +70,7 @@
         <input type="hidden" name="email" value="{{$Addidea->email}}">
         <input type="hidden" name="idea_name" value="{{$Addidea->idea_name}}">
         <input type="hidden" name="number" value="{{$Addidea->number}}">
-        <input type="hidden" name="submission_company" value="{{$Addidea->submission_company}}">
+        <input type="hidden" name="company" value="{{$Addidea->company}}">
         <input type="hidden" name="idea_details" value="{{$Addidea->idea_details}}">
         <input type="hidden" name="budget" value="{{$Addidea->budget}}">
         <input type="hidden" name="target" value="{{$Addidea->target}}">

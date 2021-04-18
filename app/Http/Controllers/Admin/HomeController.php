@@ -20,7 +20,7 @@ class HomeController extends Controller
     //検索フォーム用
     $search = $request->input('search');
      // dd($request);
-    $item = DB::table('companies');
+    $item = DB::table('ideas');
 
     if($search !== null){
         //全角スペースを半角にする
@@ -32,7 +32,7 @@ class HomeController extends Controller
         //単語をループで回す
         foreach($search_split2 as $value){
             $item->where('name','like','%'.$value.'%')
-            ->orWhere('submission_company','like','%'.$value.'%')
+            ->orWhere('company','like','%'.$value.'%')
             ->orWhere('idea_name','like','%'.$value.'%')
             ->orWhere('number','like','%'.$value.'%')
             ->orWhere('idea_details','like','%'.$value.'%')
@@ -44,7 +44,7 @@ class HomeController extends Controller
         }
     }
   
-     $item->select('id','name','submission_company','idea_name','number','idea_details','budget','target','marketing','created_at');
+     $item->select('id','name','company','idea_name','number','idea_details','budget','target','marketing','created_at');
      //順番の入れ替え↓
     $item->orderBy('created_at','asc');
     //１ページあたりの表示件数

@@ -9,7 +9,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('提出先企業名') }}</label>
 
                             <div class="col-md-6">
-                        <p class="form-control">{{$items->submission_company}}</p>
+                        <p class="form-control">{{$items->company}}</p>
                       
                               </div>
                         </div>

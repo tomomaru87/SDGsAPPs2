@@ -11,7 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\User;
 use App\Models\Admin;
-use App\Models\Company;
+use App\Models\Idea;
 use Illuminate\Support\Facades\Auth; 
 use App\Http\Requests\Edit;
 use App\Http\Requests\Add;
@@ -28,7 +28,7 @@ class HomeController extends Controller
     {   
         $user = Auth::user();
         $items= User::orderby('created_at','desc')->get();
-        $Add_items= Company::orderby('created_at','desc')->get();
+        $Add_items= Idea::orderby('created_at','desc')->get();
         return view('user.home')->with(['items'=>$items,'user'=>$user,'Add_items'=>$Add_items]);
 
     }
@@ -44,7 +44,7 @@ class HomeController extends Controller
  
 
     protected function update(Edit $request){
-        Company::where('id',$request->id)->update([
+        Idea::where('id',$request->id)->update([
             'idea_name'=>$request->idea_name,
             'number'=>$request->number,
             'idea_details'=>$request->idea_details,
@@ -86,11 +86,11 @@ class HomeController extends Controller
     protected function success(Add $request){
     
 
-        Company::create([
+        Idea::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'idea_name'=>$request->idea_name,
-            'submission_company'=>$request->submission_company,
+            'company'=>$request->company,
             'number'=>$request->number,
             'idea_details'=>$request->idea_details,
             'budget'=>$request->budget,
@@ -99,7 +99,7 @@ class HomeController extends Controller
 
         ]);
 
-        $column = Company::where('name',$request->name)
+        $column = Idea::where('name',$request->name)
             ->where('idea_name',$request->idea_name)
             ->where('idea_details',$request->idea_details)
             ->first();
@@ -122,11 +122,11 @@ class HomeController extends Controller
     }
 
     protected function destroy(Request $request){
-        Company::where('id',$request->id)->where('name',$request->name)->where('email',$request->email)->delete();
+        Idea::where('id',$request->id)->where('name',$request->name)->where('email',$request->email)->delete();
 
         $user = Auth::user();
         $items= User::orderby('created_at','desc')->get();
-        $Add_items= Company::orderby('created_at','desc')->get();
+        $Add_items= Idea::orderby('created_at','desc')->get();
         return view('user.home')->with(['items'=>$items,'user'=>$user,'Add_items'=>$Add_items]);
 
     }
