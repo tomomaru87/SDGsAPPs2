@@ -105,11 +105,20 @@ class HomeController extends Controller
             ->first();
         
         $id = $column->id;
-        $path = public_path().'/ideas/'.$id;
+        $path = public_path().'/Addideas/'.$id;
+
+        if(file_exists($path)){
+
+        move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
+        return view('user.success');
+
+        }else{
+
         mkdir($path);
         move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
-
         return view('user.success');
+
+        }
     }
 
     protected function destroy(Request $request){

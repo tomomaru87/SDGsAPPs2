@@ -2,28 +2,8 @@
 @section('content')
 
 <div class="container">
-@unless (Auth::guard('user')->check())
 
-<button type="button"class="btn-info text-center w-25">
-     <a class="font-weight-bold text-center" href="{{ route('user.login') }}">{{ __('ユーザーログイン') }}</a>
- </button>
- @if (Route::has('user.register'))
- <button type="button"class="btn-info text-center w-25">
-                                 <a class="font-weight-bold text-center" href="{{ route('user.register') }}">{{ __('ユーザー登録') }}</a>
-                                </button>
-                            @endif
-        @else
-        <a  type = "button" class= "btn btn-outline-success" href="{{ route('user.login') }}">{{ __('ユーザー管理ページへ') }}</a>
-
-            <a type = "button" class= "btn btn-outline-success" href="{{ route('user.logout') }}" onclick="event.preventDefault();
-                 document.getElementById('logout-form').submit();">{{ __('ログアウト') }}</a>
-            <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
-     @csrf
-    </form>
-    @endunless
-                    
-      
-       <h1 class="display-6">募集企業一覧</h1>
+       <h1 class="display-6 text-center">募集企業一覧</h1>
             @foreach($items as $companyData)
        
 

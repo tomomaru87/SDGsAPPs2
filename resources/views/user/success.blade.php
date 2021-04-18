@@ -1,3 +1,8 @@
-<h2>アイディアの提出が完了しました。</h2>
+@extends('layouts.user.app')
+@section('content')
 
-<a href="home">管理画面に戻る</a>
+<h2 class="text-center">アイディアの提出が完了しました。</h2>
+
+<a href="home" class="btn btn-primary text-center">管理画面に戻る</a>
+
+@endsection

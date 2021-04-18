@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('layouts.user.app')
 
 @section('content')
 
@@ -40,7 +40,7 @@
         <label>マーケティングプラン：<b>{{$Addidea->marketing}}</b></label>
         </div>
 
-        <p class="row"><a href="<?php print '/Addidea/'.$Addidea->id.'/'.'idea.pdf';?>">補足資料はこちら（PDFファイル）</a></p>
+        <p class="row"><a href="<?php print '/Addideas/'.$Addidea->id.'/'.'idea.pdf';?>">補足資料はこちら（PDFファイル）</a></p>
 
         <!--見えないように編集ページに情報の送付-->
         <form method="post" action="edit">
