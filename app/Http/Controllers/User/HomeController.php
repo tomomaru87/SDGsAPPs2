@@ -41,41 +41,9 @@ class HomeController extends Controller
        
     }
 
-    public function edit2(Request $request){
-  
-        $user = Auth::user();
-        $items= $request;
-      
-        return view('user.edit2')->with(['items'=>$items,'user'=>$user]);
-       
-    }
+ 
 
     protected function update(Edit $request){
-        
-        User::where('id',$request->id)->update([
-            'idea_name'=>$request->idea_name,
-            'number'=>$request->number,
-            'idea_details'=>$request->idea_details,
-            'budget'=>$request->budget,
-            'marketing'=>$request->marketing,
-            'target'=>$request->target
-            
-        ]);
-
-       
-
-        $id = $request->id;
-        $path = public_path().'/ideas/'.$id;
-        move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
-
-        return view('user.comp');
-
-    }
-
-
-
-    protected function update2(Edit $request){
-        
         Company::where('id',$request->id)->update([
             'idea_name'=>$request->idea_name,
             'number'=>$request->number,
@@ -87,18 +55,30 @@ class HomeController extends Controller
         ]);
 
         $id = $request->id;
-        $path = public_path().'/ideas/'.$id;
+        $path = public_path().'/Addideas/'.$id;
+        //ファイルがあったら作る。無ければそのまま上書き
+        if(file_exists($path)){
+
+            move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
+
+            return view('user.comp');
+        }
+        
+       
+        mkdir($path);
         move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
 
         return view('user.comp');
 
-        }
+       
 
+    }
 
     protected function add(){
 
         //会社情報の送付（選択肢を与えない）
         $company=$_POST['add-company'];
+     
         return view('user.add')->with(['company'=>$company]);
        
     }
@@ -119,8 +99,26 @@ class HomeController extends Controller
 
         ]);
 
+        $column = Company::where('name',$request->name)
+            ->where('idea_name',$request->idea_name)
+            ->where('idea_details',$request->idea_details)
+            ->first();
+        
+        $id = $column->id;
+        $path = public_path().'/ideas/'.$id;
+        mkdir($path);
+        move_uploaded_file($_FILES['pdf']['tmp_name'],$path.'/'.'idea.pdf');
+
         return view('user.success');
-     
-       
+    }
+
+    protected function destroy(Request $request){
+        Company::where('id',$request->id)->where('name',$request->name)->where('email',$request->email)->delete();
+
+        $user = Auth::user();
+        $items= User::orderby('created_at','desc')->get();
+        $Add_items= Company::orderby('created_at','desc')->get();
+        return view('user.home')->with(['items'=>$items,'user'=>$user,'Add_items'=>$Add_items]);
+
     }
 }

@@ -27,11 +27,10 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
         Route::resource('home', 'HomeController', ['only' => 'index']);
         //アイディアの編集ルート↓
         Route::post('edit', 'HomeController@edit');
-        Route::post('edit2', 'HomeController@edit2');
-        Route::post('comp2','HomeController@update2');
         Route::post('comp','HomeController@update');
         Route::post('add','HomeController@add');
         Route::post('success','HomeController@success');
+        Route::post('destroy','HomeController@destroy');
        
     });
 });

@@ -20,7 +20,7 @@ class HomeController extends Controller
     //検索フォーム用
     $search = $request->input('search');
      // dd($request);
-    $item = DB::table('users');
+    $item = DB::table('companies');
 
     if($search !== null){
         //全角スペースを半角にする

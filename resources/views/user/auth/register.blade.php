@@ -62,11 +62,10 @@
                         </div>
 
                     <hr>
-                        <div class="form-group row">
+                        <!--div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('提出先企業名') }}</label>
 
-                            <!--div class="col-md-6">
-                                <input id="submission_company" type="text" class="form-control @error('submission_company') is-invalid @enderror" name="submission_company" value="{{ old('submission_company') }}" required autocomplete="submission_company"-->
+                          
                                
                         <select name="submission_company">
                         @foreach($company as $name)
@@ -168,7 +167,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div-- class="form-group">
                     <label for="comment">その他補足資料(PDFのみ対応)</label>
                     <input type="file" class="form-control" id="pdf" name="pdf" accept=".pdf"></input>
                     @error('pdf')
@@ -176,12 +175,12 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                </div>
+                </div-->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('アイディアの送信') }}
+                                    {{ __('ユーザー登録') }}
                                 </button>
                             </div>
                         </div>

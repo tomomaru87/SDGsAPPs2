@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="success" enctype="multipart/form-data" >
+                <form method="POST" action="success" enctype="multipart/form-data" >
                         @csrf
 
             <input id="name" type="hidden" class="form-control" name="name" value="{{Auth::user()->name}}">

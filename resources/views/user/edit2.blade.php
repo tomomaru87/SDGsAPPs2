@@ -8,12 +8,12 @@
                             <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('提出先企業名') }}</label>
 
-                  
-                        <p>{{$items->submission_company}}</p>
+                            <div class="col-md-6">
+                        <p class="form-control">{{$items->submission_company}}</p>
                       
                               
                         </div>
-
+                        </div>
 
                         <div class="form-group row">
                             <label for="idea_name" class="col-md-4 col-form-label text-md-right">{{ __('アイディア名') }}</label>
@@ -100,14 +100,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                        <label for="comment">その他補足資料(PDFのみ対応)</label>
+                        <div class="form-group row">
+                        <label for="comment" class="col-md-4 col-form-label text-md-right">その他補足資料(PDFのみ対応)</label>
+                        <div class="col-md-6">
                         <input type="file" class="form-control" id="pdf" name="pdf" accept=".pdf"></input>
                         @error('pdf')
                             <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                          </span>
                         @enderror
+                        </div>
                         </div>
 
                         <input type="hidden" name="id" value="{{$items->id}}">
