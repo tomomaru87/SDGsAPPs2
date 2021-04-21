@@ -18,7 +18,7 @@
 
         
             @for($i=0 ; $i < count($items);$i++)
-           @if($items[$i]->submission_company==$user->name)
+           @if($items[$i]->company==$user->name)
         
 <p><a href="<?php print '/ideas/'.$items[$i]->id.'/'.'idea.pdf';?>">補足資料はこちら（PDFファイル）</a></p>
 
@@ -26,7 +26,7 @@
                 <label>アイディア提出者：<b>{{$items[$i]->name}} </b></label>
             </div>
 <div class="row">
-                <label>提出先会社名：<b>{{$items[$i]->submission_company}} </b></label>
+                <label>提出先会社名：<b>{{$items[$i]->company}} </b></label>
               
             </div>
             <div class="row">
