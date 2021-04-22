@@ -1,7 +1,7 @@
 <?php
 
 //TOPページ
-Route::get('/','CompanyController@add');
+Route::match(['get','post'],'/','CompanyController@add');
 
 
 //会社情報入力関係

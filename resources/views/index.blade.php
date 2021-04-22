@@ -1,7 +1,37 @@
 @extends('layouts.user.app')
 @section('content')
 
+@unless (Auth::guard('admin')->check())
+
+                            @if (Route::has('admin.register'))
+                                
+                                <a class="nav-link" href="{{ route('admin.register') }}">{{ __('法人としてアイディアを募集する') }}</a>
+                  
+                        @endif
+                                <a class="nav-link" href="{{ route('admin.login') }}">{{ __('すでに登録済みの方はこちらからログイン') }}</a>
+                          
+                        
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    法人ログアウト<span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                       onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                                        {{ __('ログアウト') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endunless
 <div class="container">
+
 
        <h1 class="display-6 text-center">募集企業一覧</h1>
             @foreach($items as $companyData)
