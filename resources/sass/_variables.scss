@@ -7,7 +7,11 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
+$blue: #05a1e9;
+$black:#000;
+$white:#fff;
+
+
 $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66d9b;
@@ -17,3 +21,91 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
+  /*---------------------------
+    ホーム画面の編集
+    -----------------------------*/
+.company-reg{
+padding:2vw;
+
+}
+
+.company-login{
+
+}
+
+
+// トップ画像
+.top-img{
+    width:100%;
+    height: auto;
+}
+
+.heading{
+    margin-left: 18%;
+    font-size:5vw;
+    margin-top:30px;
+    margin-bottom:20px;
+  
+
+    small{
+        color: #05a1e9;
+        font-size:2.5vw;
+        padding-bottom:0px ;
+       virtial-align:bottom;
+    }
+}
+
+.company-flex{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+  
+            .company-items{
+                text-align: center;
+                margin:0px 5%;
+        
+             
+            }
+
+            .cimg{
+  
+                width:  250px;       /* ※縦横を同値に */
+                height: 250px;       /* ※縦横を同値に */
+                border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+                background-position: left top;  /* 横長画像の左上を基準に表示 */
+                display: inline-block;          /* 複数の画像を横に並べたい場合 */
+                object-fit: cover;
+                opacity: 1;
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+               
+              
+            }
+            .cimg:hover{
+                opacity: .5;}
+            .c-name{
+                margin:5px auto 3px;
+
+            }
+
+            .send-btn{
+             margin-top:15px;
+             background-color: #05a1e9;
+             border-bottom: 5px solid #04577d;
+             border-radius: 100vh;
+             font-size:1.5vw;
+
+            }
+            .send-btn:hover{
+                margin-top: 14px;
+                color: #fff;
+                background: #05a1e9;
+                border-bottom: 2px solid #04577d;
+            }
+
+
+}
+

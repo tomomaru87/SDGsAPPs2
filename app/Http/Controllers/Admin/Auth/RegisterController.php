@@ -69,9 +69,18 @@ class RegisterController extends Controller
            
         ]);
         //以下画像のアップロード
+
       
         $id = $admin->id;
         $path = public_path().'/images/'.$id;
+              //ファイルがあったら作る。無ければそのまま上書き
+        if(file_exists($path)){
+
+            move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'img.png');
+
+            return $admin;
+        }
+
         mkdir($path);
         move_uploaded_file($_FILES['image']['tmp_name'],$path.'/'.'img.png');
         
