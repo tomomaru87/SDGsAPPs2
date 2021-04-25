@@ -50,9 +50,17 @@
    @unless (Auth::guard('user')->check())
 
    @if (Route::has('user.register'))
-   <img src="<?php print '/images/'.$companyData['id'].'/'.'img.png';?>" alt="会社のロゴ" class="cimg" onclick="location.href='{{ route('user.register') }}'">
+     <div class="c-detail">
+            <img src="<?php print '/images/'.$companyData['id'].'/'.'img.png';?>" alt="会社のロゴ" class="cimg" >
 
-<br>
+            <div class=mask>
+            <p>{{$companyData->msg}}</p>
+            <button type="button" class="send-btn" onclick="location.href='{{$companyData->link}}'">企業HPへ</button>
+     </div>
+
+   </div>
+
+
    <button type="button" class="send-btn" onclick="location.href='{{ route('user.register') }}'">{{ __('ユーザー登録＆アイディアの提出') }}</button>
    @endif
 
@@ -73,6 +81,10 @@
           @endforeach
     </div>
   
-        
+    <div class="row">
+	<div class="col-md-4 offset-md-4">
+		{{ $items->links()}}
+    </div>
+</div>
        
 @endsection

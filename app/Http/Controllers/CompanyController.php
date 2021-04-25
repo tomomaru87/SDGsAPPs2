@@ -27,7 +27,7 @@ class CompanyController extends Controller
     public function add(){
         //TableSelect::orderby — select 文のソート条件を設定する
         $user = Auth::user();
-        $items= Admin::orderby('id')->get();
+        $items= Admin::orderby('id')->paginate(9);
         $Additems= Idea::orderby('created_at','desc')->get();
        return view('index')->with([
             'items'=>$items,
