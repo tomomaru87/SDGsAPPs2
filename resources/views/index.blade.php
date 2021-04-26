@@ -1,48 +1,51 @@
 @extends('layouts.user.app')
 @section('content')
 
-@unless (Auth::guard('admin')->check())
 
-      @if (Route::has('admin.register'))
-                                
-       <button class="company-reg" onclick="location.href='{{ route('admin.register') }}'">{{ __('法人登録') }}</button><br>
+<div class="img-on-btn">
+@unless (Auth::guard('admin')->check()||Auth::guard('user')->check())
+
+    
+        <div class="btn-zone"> 
+            
+        <div class="c-btn">
+       <button class="reg" onclick="location.href='{{ route('admin.register') }}'">{{ __('法人登録') }}</button><br>
+       
                   
-                       @endif
-   <button class="company-login" onclick="location.href='{{ route('admin.login') }}'">{{ __('登録済みの方はログイン') }}</button>
+   <button class="log" onclick="location.href='{{ route('admin.login') }}'">{{ __('登録済みの方はログイン') }}</button>
+   </div>
                           
                         
-                        @else
-            
-       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    法人ログアウト<span class="caret"></span>
-                                </a>
+                      
+                           
+             <div class="u-btn">           
+   <button class="reg" onclick="location.href='{{ route('user.register') }}'">{{ __('ユーザー登録') }}</button><br>
+                    
+          <button class="log" onclick="location.href='{{ route('user.login') }}'">{{ __('登録済みの方はログイン') }}</button>
+</div>
+</div>
+                      
+                        @endunless
 
-           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
-                                       onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">
-                                        {{ __('ログアウト') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                            </div>
-                            
-               @endunless
 
-<img src="other/top.png" class="top-img">
 
-<h1 class="heading">ENTRY
-<small>アイディア募集中の企業</small>
-</h1>
+    <img src="other/top.png" class="top-img">
+
+
+</div>
+
+
+    <h1 class="heading">ENTRY
+    <small>アイディア募集中の企業</small>
+    </h1>
      <div class="company-flex">
      
     
        @foreach($items as $companyData)
        
-<div class="company-items">
-    <p class="c-name">{{$companyData->name}}</p>
+    <div class="company-items">
+        <p class="c-name">{{$companyData->name}}</p>
  
   
 

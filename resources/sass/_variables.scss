@@ -26,14 +26,63 @@ $cyan: #6cb2eb;
   /*---------------------------
     ホーム画面の編集
     -----------------------------*/
-.company-reg{
-padding:2vw;
+.img-on-btn{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    width: 100%;
 
 }
 
-.company-login{
+.btn-zone{
+    display:flex;
+
+
+.c-btn{
+    position : absolute;
+    left:20%;
+    top:50%;
+    width:50%;
+
+.reg{
+    
+    font-size:1.5vw;
+    padding:2vw;
 
 }
+.log{
+  
+  
+    font-size:1.5vw;
+    padding:2vw;
+}
+}
+
+.u-btn{
+    position : absolute;
+    left:60%;
+    top:50%;
+    width:50%;
+
+.reg{
+   
+   
+    font-size:1.5vw;
+    padding:2vw;
+}
+
+.log{
+    
+   
+    font-size:1.5vw;
+    padding:2vw;
+}
+}
+
+}
+
+
+
 
 
 // トップ画像

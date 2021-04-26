@@ -4,7 +4,48 @@
   ホーム画面の編集
   -----------------------------*/
 
-.company-reg {
+.img-on-btn {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-zone {
+  display: flex;
+}
+
+.btn-zone .c-btn {
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  width: 50%;
+}
+
+.btn-zone .c-btn .reg {
+  font-size: 1.5vw;
+  padding: 2vw;
+}
+
+.btn-zone .c-btn .log {
+  font-size: 1.5vw;
+  padding: 2vw;
+}
+
+.btn-zone .u-btn {
+  position: absolute;
+  left: 60%;
+  top: 50%;
+  width: 50%;
+}
+
+.btn-zone .u-btn .reg {
+  font-size: 1.5vw;
+  padding: 2vw;
+}
+
+.btn-zone .u-btn .log {
+  font-size: 1.5vw;
   padding: 2vw;
 }
 

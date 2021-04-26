@@ -39,36 +39,53 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @unless (Auth::guard('user')->check())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.login') }}">{{ __('ユーザーログイン') }}</a>
-                            </li>
-                            @if (Route::has('user.register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.register') }}">{{ __('ユーザー登録') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
+                        @if (Auth::guard('user')->check())
+                        <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ optional(Auth::user())->name }} <span class="caret"></span>
+                                </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" 
+                                       onclick="location:href='{{route('user.login')}}'">
+                                        {{ __('管理画面へ') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('user.logout') }}"
+                                       onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+                        {{ __('ログアウト') }}
+                                    </a>
+
+                      <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                </form>
+                            </div>
+
+                        @endif
+                          
+                        @if (Auth::guard('admin')->check())
+                        <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ optional(Auth::user())->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('user.logout') }}"
+                                <a class="dropdown-item" 
+                                       onclick="location:href='{{route('admin.login')}}'">
+                                        {{ __('管理画面へ') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('ログアウト') }}
+                                        {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-                        @endunless
-
-                       
+                            @endif
                     </ul>
                 </div>
             </div>
