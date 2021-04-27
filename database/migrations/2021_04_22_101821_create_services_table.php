@@ -20,8 +20,8 @@ class CreateServicesTable extends Migration
             $table->string('contents');
             $table->string('products');
             $table->string('price');
-            $table->int('inventory');
-            $table->int('sale');
+            $table->string('inventory');
+            $table->string('sale');
             
         });
     }

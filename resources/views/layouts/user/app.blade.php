@@ -97,11 +97,15 @@
                                 </a>
 
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('CONTACT')  }} <span class="caret"></span>
+                                    {{ __('COMPANY')  }} <span class="caret"></span>
                                 </a>
 
                                 <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('SHOP')  }} <span class="caret"></span>
+                                </a>
+
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('CONTACT')  }} <span class="caret"></span>
                                 </a>
 
                         

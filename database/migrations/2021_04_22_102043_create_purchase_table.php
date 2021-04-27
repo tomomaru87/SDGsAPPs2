@@ -17,7 +17,7 @@ class CreatePurchaseTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('product');
-            $table->int('price');
+            $table->string('price');
             $table->string('methodpay');
             $table->string('time');
             $table->string('code');
