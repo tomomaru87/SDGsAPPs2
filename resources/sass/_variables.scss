@@ -10,17 +10,27 @@ $line-height-base: 1.6;
 $blue: #05a1e9;
 $black:#000;
 $white:#fff;
+$orange: #f88420;
+$ivory: #ffe8bd;
 
 
 $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66d9b;
 $red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
+
+
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
+  /*---------------------------
+    全体の設定
+    -----------------------------*/
+body{
+    font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
 
 
   /*---------------------------
@@ -40,42 +50,58 @@ $cyan: #6cb2eb;
 
 .c-btn{
     position : absolute;
-    left:20%;
+    left:5%;
     top:50%;
     width:50%;
+    
 
 .reg{
     
     font-size:1.5vw;
     padding:2vw;
+    padding: 1rem 4rem;
+    border-radius: 0.5rem;
+    background-color: $orange;
+    color:$white;
 
 }
 .log{
   
   
-    font-size:1.5vw;
-    padding:2vw;
+    font-size:1.2vw;
+    padding:1vw;
+    margin-top:20px;
+    border-radius: 0.5rem;
+    background-color: $ivory;
 }
 }
 
 .u-btn{
     position : absolute;
-    left:60%;
+    left:50%;
     top:50%;
     width:50%;
+
 
 .reg{
    
    
     font-size:1.5vw;
     padding:2vw;
+    padding: 1rem 4rem;
+    border-radius: 0.5rem;
+    background-color: $white;
+    color:$orange;
 }
 
 .log{
     
    
-    font-size:1.5vw;
-    padding:2vw;
+    font-size:1.2vw;
+    padding:1vw;
+    margin-top:20px;
+    border-radius: 0.5rem;
+    background-color: $ivory;
 }
 }
 

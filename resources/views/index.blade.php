@@ -40,8 +40,6 @@
     <small>アイディア募集中の企業</small>
     </h1>
      <div class="company-flex">
-     
-    
        @foreach($items as $companyData)
        
     <div class="company-items">
@@ -68,6 +66,7 @@
    @endif
 
    @else
+   <div class="c-detail">
    <img src="<?php print '/images/'.$companyData['id'].'/'.'img.png';?>" alt="会社のロゴ" class="cimg" onclick="event.preventDefault();
         document.getElementById('add-form').submit();">
 
@@ -77,6 +76,7 @@
      <input type="hidden" name="add-company" value="{{$companyData->name}}">
      <button type="submit" class="send-btn"> アイディアを追加する</button>
     </form>
+    </div>
     @endunless
           
     
